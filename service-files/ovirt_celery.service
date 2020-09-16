@@ -1,14 +1,14 @@
 [Unit]
-Description=Ovirt imageio Celery Service
+Description=Trilio Celery Service
 After=network.target
 
 [Service]
 User=vdsm
 Group=kvm
 Type=forking
-Environment=/opt/ovirt-imageio/daemon/datamover/venv/bin/python:$PATH
-EnvironmentFile=/opt/ovirt-imageio/daemon/datamover/ovirt_celery
-WorkingDirectory=/opt/ovirt-imageio/daemon/datamover/
+Environment=/opt/trilio-datamover/daemon/datamover/venv/bin/python:$PATH
+EnvironmentFile=/opt/trilio-datamover/daemon/datamover/ovirt_celery
+WorkingDirectory=/opt/trilio-datamover/daemon/datamover/
 Restart=always
 ExecStart=/bin/sh -c '${CELERY_BIN} multi start ${CELERYD_NODES} \
   -A ${CELERY_APP} --pidfile=${CELERYD_PID_FILE} \
